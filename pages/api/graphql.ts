@@ -5,10 +5,4 @@ import { context } from "../../src/context";
 const server = new ApolloServer({ schema, context });
 const handler = server.createHandler({ path: "/api/graphql" });
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 export default handler;
