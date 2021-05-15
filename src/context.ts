@@ -5,9 +5,9 @@ import DataLoader from "dataloader";
 const prisma = new PrismaClient({ log: ["query"] });
 
 const createArtistLoader = () =>
-  new DataLoader<number, Artist | null>(async (keys) => {
+  new DataLoader<number, Artist | null>(async (ids) => {
     const artists = await prisma.artist.findMany({
-      where: { id: { in: [...keys] } },
+      where: { id: { in: [...ids] } },
     });
 
     const artistMap = artists.reduce(
@@ -15,7 +15,7 @@ const createArtistLoader = () =>
       new Map<number, Artist>()
     );
 
-    return keys.map((id) => artistMap.get(id) ?? null);
+    return ids.map((id) => artistMap.get(id) ?? null);
   });
 
 export interface Context {
