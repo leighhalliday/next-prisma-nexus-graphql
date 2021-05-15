@@ -22,7 +22,7 @@ const Album = objectType({
         const artist = await ctx.artistLoader.load(album.artistId);
         // const artist = await ctx.prisma.artist.findFirst({
         //   where: { id: album.artistId },
-        // })!;
+        // });
         return artist!;
       },
     });
