@@ -23,6 +23,6 @@ export interface Context {
   artistLoader: ReturnType<typeof createArtistLoader>;
 }
 
-export function createContext(): Context {
+export function context(): Context {
   return { prisma, artistLoader: createArtistLoader() };
 }
